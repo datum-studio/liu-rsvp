@@ -18,7 +18,7 @@ export const firebaseConfig = {
 export const eventInfo = {
   title: "Aniversário da Liu",
   dateLabel: "07 de setembro de 2026",
-  timeLabel: "14h",
+  timeLabel: "14h30",
   location: "Resort Cajueiro",
   host: "Liu",
 };
