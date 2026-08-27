@@ -13,14 +13,37 @@ const form = document.getElementById("rsvp-form");
 const nameInput = document.getElementById("rsvp-name");
 const attendButtons = document.querySelectorAll(".attend-btn");
 const companionsRow = document.getElementById("companions-row");
-const compValue = document.getElementById("comp-value");
-const compMinus = document.getElementById("comp-minus");
-const compPlus = document.getElementById("comp-plus");
+const companionRowsEl = document.getElementById("companion-rows");
+const addCompanionBtn = document.getElementById("add-companion-btn");
 const submitBtn = document.getElementById("submit-btn");
 const formError = document.getElementById("form-error");
 
 let attending = null;
-let companions = 0;
+
+function addCompanionRow(focus) {
+  const row = document.createElement("div");
+  row.className = "companion-row";
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "companion-input";
+  input.placeholder = "nome do acompanhante";
+  input.autocomplete = "off";
+
+  const remove = document.createElement("button");
+  remove.type = "button";
+  remove.className = "companion-remove";
+  remove.setAttribute("aria-label", "remover acompanhante");
+  remove.innerHTML = "&times;";
+  remove.addEventListener("click", () => row.remove());
+
+  row.appendChild(input);
+  row.appendChild(remove);
+  companionRowsEl.appendChild(row);
+  if (focus) input.focus();
+}
+
+addCompanionBtn.addEventListener("click", () => addCompanionRow(true));
 
 function submitLabel() {
   return attending === true ? "&hearts;&nbsp; CONFIRMAR PRESENÇA" : "ENVIAR RESPOSTA";
@@ -36,17 +59,9 @@ attendButtons.forEach((btn) => {
     btn.classList.add("is-active");
     attending = btn.getAttribute("data-value") === "yes";
     companionsRow.classList.toggle("is-hidden", !attending);
+    if (attending && !companionRowsEl.children.length) addCompanionRow(false);
     submitBtn.innerHTML = submitLabel();
   });
-});
-
-compMinus.addEventListener("click", () => {
-  companions = Math.max(0, companions - 1);
-  compValue.textContent = companions;
-});
-compPlus.addEventListener("click", () => {
-  companions = Math.min(20, companions + 1);
-  compValue.textContent = companions;
 });
 
 function showSuccess(name, isAttending) {
@@ -87,13 +102,20 @@ form.addEventListener("submit", async (ev) => {
     return;
   }
 
+  const companions = attending
+    ? Array.from(document.querySelectorAll(".companion-input"))
+        .map((i) => i.value.trim())
+        .filter(Boolean)
+        .slice(0, 20)
+    : [];
+
   submitBtn.disabled = true;
   submitBtn.textContent = "enviando...";
 
   const entry = {
     name,
     attending,
-    companions: attending ? companions : 0,
+    companions,
     submittedAt: serverTimestamp(),
   };
 

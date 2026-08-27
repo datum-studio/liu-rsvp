@@ -116,16 +116,27 @@ input.text-input:focus{border-bottom-color:var(--wine);}
 .attend-btn.is-active{background:var(--wine);border-color:var(--wine);color:var(--paper);}
 .attend-btn:not(.is-active):hover{border-color:var(--wine);}
 
-.companions-row{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.companions-row{margin-top:18px;}
 .companions-row.is-hidden{display:none;}
-.companions-label{font-size:14px;color:var(--ink-soft);max-width:280px;}
-.stepper{display:flex;align-items:center;gap:14px;flex:none;}
-.stepper button{
-  width:34px;height:34px;border-radius:50%;border:1.5px solid var(--wine);background:transparent;color:var(--wine);
-  font-size:18px;line-height:1;cursor:pointer;
+.companions-label{display:block;font-size:14px;color:var(--ink-soft);margin-bottom:10px;}
+.companion-rows{display:flex;flex-direction:column;gap:10px;}
+.companion-row{display:flex;align-items:center;gap:10px;}
+.companion-row input{
+  flex:1;min-width:0;border:none;border-bottom:1.5px solid var(--line);background:transparent;
+  font-family:'Caveat',cursive;font-size:21px;color:var(--ink);padding:4px 2px 7px;
 }
-.stepper button:hover{background:var(--wine);color:var(--paper);}
-.stepper output{font-family:'Caveat',cursive;font-size:24px;min-width:22px;text-align:center;}
+.companion-row input::placeholder{color:#a89a86;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.03em;}
+.companion-row input:focus{border-bottom-color:var(--wine);}
+.companion-remove{
+  flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:transparent;
+  color:var(--ink-soft);font-size:15px;line-height:1;cursor:pointer;
+}
+.companion-remove:hover{border-color:var(--wine);color:var(--wine);}
+.add-companion-btn{
+  margin-top:12px;width:100%;padding:10px 14px;border:1.5px dashed var(--line);background:transparent;
+  color:var(--ink-soft);font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.05em;cursor:pointer;
+}
+.add-companion-btn:hover{border-color:var(--wine);color:var(--wine);}
 
 .submit-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:28px;

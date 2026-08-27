@@ -25,10 +25,14 @@ function fmtWhen(ts) {
   return dd + " às " + hh;
 }
 
+function companionCount(r) {
+  return Array.isArray(r.companions) ? r.companions.length : Number(r.companions) || 0;
+}
+
 function render(rows) {
   const yes = rows.filter((r) => r.attending);
   const no = rows.filter((r) => !r.attending);
-  const people = yes.reduce((sum, r) => sum + 1 + (Number(r.companions) || 0), 0);
+  const people = yes.reduce((sum, r) => sum + 1 + companionCount(r), 0);
 
   statYes.textContent = yes.length;
   statPeople.textContent = people;
@@ -44,8 +48,13 @@ function render(rows) {
   listEl.innerHTML = rows
     .map((r) => {
       const bits = [];
-      if (r.attending && r.companions) {
-        bits.push("+" + r.companions + (r.companions === 1 ? " acompanhante" : " acompanhantes"));
+      if (r.attending && companionCount(r) > 0) {
+        const names = Array.isArray(r.companions) ? r.companions.filter(Boolean) : [];
+        bits.push(
+          names.length
+            ? "com " + names.map(esc).join(", ")
+            : "+" + companionCount(r) + (companionCount(r) === 1 ? " acompanhante" : " acompanhantes")
+        );
       }
       bits.push(fmtWhen(r.submittedAt));
       return (
