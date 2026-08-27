@@ -66,7 +66,10 @@
             </div>
           </div>
 
-          <button class="submit-btn" id="submit-btn" type="submit">ENVIAR RESPOSTA</button>
+          <div class="form-actions">
+            <button class="submit-btn" id="submit-btn" type="submit">ENVIAR RESPOSTA</button>
+            <button type="button" class="text-link-btn is-hidden" id="cancel-btn">cancelar</button>
+          </div>
           <div id="form-error"></div>
         </form>
       </div>
@@ -78,6 +81,14 @@
         <div class="details" id="success-details">
           <div class="row"><span class="k">QUANDO</span><span class="v">07 de setembro de 2026 &middot; 14h30</span></div>
           <div class="row"><span class="k">ONDE</span><span class="v">Resort Cajueiro</span></div>
+        </div>
+        <div class="success-actions">
+          <button type="button" class="text-link-btn" id="edit-btn">editar essa confirmação</button>
+          <button type="button" class="text-link-btn" id="add-another-btn">+ confirmar para outra pessoa</button>
+        </div>
+        <div class="other-entries is-hidden" id="other-entries">
+          <p class="other-entries-label">outras confirmações feitas por aqui:</p>
+          <div class="other-entries-list" id="other-entries-list"></div>
         </div>
       </div>
 
