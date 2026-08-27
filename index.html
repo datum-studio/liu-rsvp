@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSVP · Aniversário da Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Special+Elite&display=swap"
+  />
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="tape"></div>
+      <div class="top-row">
+        <div class="postmark">
+          <div class="postmark-inner">
+            <span class="postmark-day">07</span>
+            <span class="postmark-month">SET · 2026</span>
+          </div>
+        </div>
+        <div class="eyebrow">BOAS<br />HISTÓRIAS<br />LIU</div>
+      </div>
+
+      <figure class="polaroid"><img src="./assets/polaroid.jpg" alt="" /></figure>
+
+      <div id="form-section">
+        <h1 class="title">ANIVERSÁRIO DA LIU</h1>
+        <p class="script-sub">vem comemorar comigo?</p>
+
+        <div class="details">
+          <div class="row"><span class="k">QUANDO</span><span class="v">07 de setembro de 2026 &middot; 14h</span></div>
+          <div class="row"><span class="k">ONDE</span><span class="v">Resort Cajueiro</span></div>
+        </div>
+
+        <div class="divider"><span class="dots"></span><span class="heart">&hearts;</span><span class="dots"></span></div>
+
+        <form id="rsvp-form" novalidate>
+          <div class="field">
+            <label class="field-label" for="rsvp-name">SEU NOME</label>
+            <input
+              class="text-input"
+              id="rsvp-name"
+              name="name"
+              type="text"
+              placeholder="escreva aqui"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label class="field-label">VOCÊ VEM?</label>
+            <div class="segmented">
+              <button type="button" class="attend-btn" data-value="yes">SIM, VOU!</button>
+              <button type="button" class="attend-btn" data-value="no">NÃO VOU PODER</button>
+            </div>
+            <div class="companions-row is-hidden" id="companions-row">
+              <span class="companions-label">quantos acompanhantes vêm com você?</span>
+              <div class="stepper">
+                <button type="button" id="comp-minus" aria-label="diminuir">&minus;</button>
+                <output id="comp-value">0</output>
+                <button type="button" id="comp-plus" aria-label="aumentar">+</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="submit-btn" id="submit-btn" type="submit">ENVIAR RESPOSTA</button>
+          <div id="form-error"></div>
+        </form>
+      </div>
+
+      <div id="success-section" class="success is-hidden">
+        <div class="stamp" id="success-stamp">&#10003; CONFIRMADO</div>
+        <h1 class="title" id="success-title">Combinado!</h1>
+        <p class="script-sub" id="success-sub">te espero lá ♡</p>
+        <div class="details" id="success-details">
+          <div class="row"><span class="k">QUANDO</span><span class="v">07 de setembro de 2026 &middot; 14h</span></div>
+          <div class="row"><span class="k">ONDE</span><span class="v">Resort Cajueiro</span></div>
+        </div>
+      </div>
+
+      <footer class="foot">com carinho, Liu</footer>
+    </div>
+  </div>
+
+  <script type="module" src="./assets/form.js"></script>
+</body>
+</html>

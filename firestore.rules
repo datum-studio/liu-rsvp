@@ -1,0 +1,30 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Coleção "rsvps": qualquer visitante pode CRIAR uma confirmação (sem login)
+    // e LER a lista (é assim que a página de confirmados funciona sem senha).
+    // Ninguém pode alterar ou apagar uma confirmação já enviada por fora do
+    // Console do Firebase — isso evita que um convidado apague a resposta de outro.
+    match /rsvps/{rsvpId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(['name', 'attending', 'companions', 'submittedAt'])
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.name.size() < 120
+                    && request.resource.data.attending is bool
+                    && request.resource.data.companions is int
+                    && request.resource.data.companions >= 0
+                    && request.resource.data.companions <= 20;
+
+      allow update, delete: if false;
+    }
+
+    // Bloqueia qualquer outra coleção por padrão.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

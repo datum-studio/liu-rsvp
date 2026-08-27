@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Confirmados · Aniversário da Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Special+Elite&display=swap"
+  />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="admin-head">
+        <div class="postmark small">
+          <div class="postmark-inner">
+            <span class="postmark-day">07</span>
+            <span class="postmark-month">SET · 2026</span>
+          </div>
+        </div>
+        <div class="admin-title">
+          <h1 class="title">Confirmados</h1>
+          <div class="sub" id="admin-event">Aniversário da Liu</div>
+        </div>
+        <span class="live-dot is-hidden" id="live-dot">AO VIVO</span>
+      </div>
+
+      <div id="admin-error"></div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="n" id="stat-yes">0</div><div class="l">CONFIRMARAM</div></div>
+        <div class="stat"><div class="n" id="stat-people">0</div><div class="l">PESSOAS NO TOTAL</div></div>
+        <div class="stat"><div class="n" id="stat-no">0</div><div class="l">NÃO VÃO</div></div>
+      </div>
+
+      <div class="guest-list" id="guest-list"></div>
+      <div class="empty-state is-hidden" id="empty-state">
+        Ainda ninguém confirmou.<br />Assim que alguém responder, aparece aqui.
+      </div>
+
+      <div class="refresh-row"><button class="refresh-btn" id="refresh-btn">atualizar lista</button></div>
+      <div class="admin-note">este link mostra a lista ao vivo &mdash; guarde só pra você.</div>
+    </div>
+  </div>
+
+  <script type="module" src="../assets/admin.js"></script>
+</body>
+</html>
